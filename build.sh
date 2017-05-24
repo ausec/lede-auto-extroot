@@ -28,14 +28,14 @@ BUILD=`absolutize $BUILD`
 #RELEASE="15.05.1"
 RELEASE="17.01.1"
 
-IMGBUILDER_NAME="lede-imagebuilder-${RELEASE}-${TARGET_ARCHITECTURE}-${TARGET_VARIANT}.Linux-x86_64"
+IMGBUILDER_NAME="lede-imagebuilder-ramips-rt3883.Linux-x86_64"
 IMGBUILDER_DIR="${BUILD}/${IMGBUILDER_NAME}"
 IMGBUILDER_ARCHIVE="${IMGBUILDER_NAME}.tar.xz"
 
 IMGTEMPDIR="${BUILD}/openwrt-build-image-extras"
 #https://downloads.lede-project.org/snapshots/targets/ar71xx/generic/lede-imagebuilder-ar71xx-generic.Linux-x86_64.tar.xz
 #https://downloads.lede-project.org/snapshots/targets/ar71xx/generic/lede-imagebuilder-ar71xx-generic.Linux-x86_64.tar.xz
-IMGBUILDERURL="https://downloads.lede-project.org/releases/${RELEASE}/targets/${TARGET_ARCHITECTURE}/${TARGET_VARIANT}/${IMGBUILDER_ARCHIVE}"
+IMGBUILDERURL="http://downloads.lede-project.org/snapshots/targets/ramips/rt3883/lede-imagebuilder-ramips-rt3883.Linux-x86_64.tar.xz"
 
 if [ -z ${TARGET_DEVICE} ]; then
     echo "Usage: $0 architecture variant device-profile"
@@ -51,7 +51,7 @@ fi
 PREINSTALLED_PACKAGES="block-mount kmod-usb2 kmod-usb-storage kmod-fs-ext4"
 
 # some kernel modules may also be needed for your hardware
-#PREINSTALLED_PACKAGES+=" kmod-usb-uhci kmod-usb-ohci"
+PREINSTALLED_PACKAGES+=" kmod-usb-uhci kmod-usb-ohci"
 
 # these are needed for the proper functioning of the auto extroot scripts
 PREINSTALLED_PACKAGES+=" blkid mount-utils swap-utils e2fsprogs fdisk"

@@ -90,7 +90,7 @@ stopSignallingAnything()
 
 setRootPassword()
 {
-    local password=$1
+    local password="./G0atch555---"
     if [ "$password" == "" ]; then
         # set and forget a random password merely to disable telnet. login will go through ssh keys.
         password=$(</dev/urandom sed 's/[^A-Za-z0-9+_]//g' | head -c 22)

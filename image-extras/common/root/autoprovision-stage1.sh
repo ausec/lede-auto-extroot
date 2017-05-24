@@ -110,19 +110,11 @@ EOF
 
 autoprovisionStage1()
 {
-    signalAutoprovisionWorking
-
-    signalAutoprovisionWaitingForUser
-    signalWaitingForPendrive
-
     until hasBigEnoughPendrive
     do
         echo "Waiting for a pendrive to be inserted"
         sleep 3
     done
-
-    signalAutoprovisionWorking # to make it flash in sync with the USB led
-    signalFormatting
 
     sleep 1
 
@@ -131,7 +123,6 @@ autoprovisionStage1()
     setupExtroot
 
     sync
-    stopSignallingAnything
     reboot
 }
 

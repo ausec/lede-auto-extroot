@@ -6,15 +6,12 @@
 
 installPackages()
 {
-    signalAutoprovisionWaitingForUser
 
     until (opkg update)
     do
         log "opkg update failed. No internet connection? Retrying in 15 seconds..."
         sleep 15
     done
-
-    signalAutoprovisionWorking
 
     log "Autoprovisioning stage2 is about to install packages"
 
@@ -48,7 +45,6 @@ autoprovisionStage2()
         log "Seems like autoprovisioning stage2 has been done already. Running stage3."
         #/root/autoprovision-stage3.py
     else
-        signalAutoprovisionWorking
 
         # CUSTOMIZE: with an empty argument it will set a random password and only ssh key based login will work.
         # please note that stage2 requires internet connection to install packages and you most probably want to log in
